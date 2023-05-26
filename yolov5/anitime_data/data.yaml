@@ -1,0 +1,14 @@
+train: ./anitime_data/train/images
+val: ./anitime_data/valid/images
+test: ./anitime_data/test/images
+
+
+nc: 1
+names: ['-', '16', '17', '20', '25', '28']
+
+roboflow:
+  workspace: anitime
+  project: dog-breeds-sszc2
+  version: 2
+  license: Public Domain
+  url: https://universe.roboflow.com/anitime/dog-breeds-sszc2/dataset/2
