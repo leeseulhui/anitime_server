@@ -8,15 +8,15 @@ import subprocess
 import pymysql
 
 
-
+#Blueprint 생성
 bp= Blueprint('main',__name__,url_prefix='/')
 
-
+#루트 경로에 대한 처리
 @bp.route('/')
 def hello():
-    return "hello"
+    return "hello welcome anitime!"
 
-
+#등록 경로에 대한 처리
 @bp.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -35,25 +35,25 @@ def register():
         print(formoment1)
 
     try:
-        # for yolov5
+        # YOLOv5를 이용하여 이미지 검출
         createFolder('./SVM-Classifier/testimage/%s' % (formoment1))
         forlookup.save('./SVM-Classifier/testimage/%s/%s.jpg' % (formoment1, formoment1))
         os.system(
             'cd YOLOv5 && python ../YOLOv5/detect.py --source ../SVM-Classifier/testimage/%s --weights ../YOLOv5/best.pt --option test --conf 0.25' % (
                 formoment1))
     except Exception as e1:
-        print("[등록시 조회] yolov5 코드가 안돌아가서 실패", e1)
+        print("[등록시 조회] yolov5 코드가 안돌아가서 실패했습니다.", e1)
         return jsonify({'message': 'fail'})
 
     try:
-        # 5장 중 1장만 ml코드 돌리기
+        # 5장 중 1장만 ml코드 돌리기(SVM 분류 모델을 이용하여 등록된 강아지인지 화인)
         result = getSVMResultForRegister(formoment1)
         compare = result.decode('utf-8').split(',')
         print(compare)
         if compare == ['']:
             raise Exception('error')
     except Exception as e:
-        print("ML코드가 안돌아가서 등록 실패", e)
+        print("ML코드가 안돌아가서 등록 실패했습니다.", e)
         return jsonify({'message': 'fail'})
 
     if compare[1] == '등록된강아지':
@@ -242,7 +242,7 @@ def register():
                     newuser.close()
 
 
-# [조회 API]
+# [조회 API] // POST 요청을 통해 전송된 이미지 처리, YOLOv5, SVM 분류 모델을 사용하여 강아지 조회
 @bp.route('/lookup', methods=['GET', 'POST'])
 def lookup():
     if request.method == 'POST':
