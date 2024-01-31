@@ -13,6 +13,8 @@
 - scikit-learn 
 - Pytorch
 
+
+
 [Back end]
 1) Backend 구현 로직 - 등록
   Client에서 비문사진 전송 -> 서버에서 preprocess 과정-> 전달받은 사진들을 통해 이미 등록된 강아지인지 classification 실행 -> (미등록 강아지일 경우) database에 사용자 및 강아지정보 등록 & client에 "등록 성공" message 전달 or (등록된 강아지일경우) client에 "이미 등록된 강아지" message 전달
@@ -30,6 +32,8 @@
    등록, 조회 API가 동시 호출 되는 경우를 처리하기 위해 비동기 작업 큐 라이브러리인 celery 사용
 
 
+
+-----------------------------------------------------------------
 
 [Machine Learning]
 1) 강아지 코를 찾기 위한 객체 탐지 모델 : YOLOv5
