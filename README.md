@@ -36,6 +36,7 @@
 -----------------------------------------------------------------
 
 [Machine Learning]
+
 1) 강아지 코를 찾기 위한 객체 탐지 모델 : YOLOv5
   객체 탐지 분야에서 유명한 YOLO(You Only Look Once)중 YOLOv5 모델을 사용하여 강아지 코 탐지 모델을 구현.
 
@@ -50,13 +51,16 @@
   <img width="378" alt="스크린샷 2024-01-31 오후 1 08 33" src="https://github.com/leeseulhui/anitime_server/assets/75656859/3f9d8146-9d1b-48f4-af7d-ad8a23410003">
 
   CLAHE 적용 후
+  
   <img width="380" alt="스크린샷 2024-01-31 오후 1 08 58" src="https://github.com/leeseulhui/anitime_server/assets/75656859/eee0c11d-dbc1-4608-8b7c-61ee6126f5f3">
+
 
 3) 특징 추출 및 벡터화 : SIFT, K-Means
    사용자에게 100장 이상의 강아지 사진을 요구할 수 없기 때문에 입력의 차원을 줄여주는 전처리 과정 필요.
    ** 과정
    - 평탄화 한 이미지에서 특징 추출 (특징 추출 알고리즘으로 SIFT 사용)
    - 추출한 특징을 100차원 벡터로 변환하여 분류 (벡터화 알고리즘 : K-means Bag of Words 기법 구현)
+
   
 4) 이미지 분류 모델 - Scikit learn의 SVM
    100차원의 벡터로 변환된 이미지를 SVM 모델을 이용하여 분류
